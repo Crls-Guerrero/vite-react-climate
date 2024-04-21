@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Erica+One&family=Jersey+25&family=Oldenburg&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #23272e;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  font-family: "Oldenburg", serif;
+}
