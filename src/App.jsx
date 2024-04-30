@@ -1,6 +1,8 @@
 import "tailwindcss/tailwind.css";
 import { useState } from "react";
 import { handleSubmit } from "./components/api.js";
+import departmentsByCountry from "./components/departaments.js";
+import countries from "./components/countries.js";
 import IM from "./assets/root.png";
 
 function App() {
@@ -12,19 +14,14 @@ function App() {
 
     setSelectedCountry(countryInfo);
 
-    const departmentsByCountry = {
-      AR: ["Buenos Aires", "Cuzco"],
-      PE: ["Arequipa", "Cuzco"],
-      CO: ["La Rioja"],
-    };
-
     const selectedDepartments = departmentsByCountry[countryInfo] || [];
     setDepartments(selectedDepartments);
   };
 
   return (
     <div className="mt-56 flex flex-col items-center justify-center text-center gap-14 max-md:mt-14 mb-14">
-      <h1 className="text-4xl text-[white]">PROYECTO CLIMATOLOGICO</h1>
+      <h1 className="text-4xl text-[white]">PROYECTO CLIMATOLOGICO (LATAM)</h1>
+
       <div className="w-auto flex flex-wrap items-center justify-center gap-10">
         <div className="w-72 h-96 flex flex-col items-start justify-center text-start gap-5">
           <form
@@ -43,9 +40,11 @@ function App() {
                 onChange={handleCountryChange}
               >
                 <option value=""></option>
-                <option value="AR">Argentina</option>
-                <option value="PE">Peru</option>
-                <option value="CO">Colombia</option>
+                {countries.map((country) => (
+                  <option key={country.code} value={country.code}>
+                    {country.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="flex flex-col gap-1">
